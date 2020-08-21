@@ -1,0 +1,53 @@
+no_of_buses=int(input())
+result=""
+buses=list(map(int,input().split()))
+buses=list(dict.fromkeys(buses))
+buses.sort()
+i=0
+j=1
+hiffen=[]
+count=0
+len1=len(buses)-1
+while(i<=len(buses)-1):
+    if(count==0):
+        hiffen.append(buses[i])
+    val=buses[i]+1
+    if(buses[j]==val):
+        hiffen.append(buses[j])
+        count=count+1
+        if(j<len1):
+            i=i+1
+            j=j+1
+        else:
+            i=i+1
+    else:
+        if(len(hiffen)==1):
+            result=result+str(hiffen[0])+' '
+            hiffen=[]
+            count=0
+            if(j<len1):
+                i=i+1
+                j=j+1
+            else:
+                i=i+1
+        elif(len(hiffen)>2):
+            min1=min(hiffen)
+            max1=max(hiffen)
+            result=result+str(min1)+'-'+str(max1)+' '
+            hiffen=[]
+            count=0
+            if(j<len1):
+                i=i+1
+                j=j+1
+            else:
+                i=i+1
+        else:
+            result=result+str(hiffen[0])+' '+str(hiffen[1])+' '
+            hiffen=[]
+            count=0
+            if(j<len1):
+                i=i+1
+                j=j+1
+            else:
+                i=i+1
+print(result)
